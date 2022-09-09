@@ -1,0 +1,30 @@
+
+<div class="container">
+    <h1>Lista de paises</h1>
+    <hr/>
+    <input type="text" class="form-control" placeholder="Buscar" (input)="filter($event)" >
+    <div class="row">
+        <div class="container-table">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr >
+                        <th scope="col" class="col-md-4">Pais</th>
+                        <th scope="col" class="col-md-4">Capital</th>
+                        <th scope="col" class="col-md-4">Poblacion</th>
+                    </tr>
+                </thead>
+                <tbody class="" *ngFor="let pais of paises! | paginate:{ itemsPerPage: 10, currentPage: page }">
+                    <tr ng-repeat = "pais in paises | ng-orderBy : 'name'">
+                        <td>{{pais.name.common}}</td>
+                        <td>{{pais.capital}}</td>
+                        <td>{{pais.population}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="Paginationctrl">
+                <pagination-controls (pageChange)="page = $event" previousLabel="Previous" nextLabel="Next">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
